@@ -7,8 +7,8 @@ env:
     - REGISTRY_PASS=knightf6
 
 script:
- - docker build --tag wanyama/myimage .
- - docker run wanyama/myimage
+ - docker build --tag wanyama/facial-recognition .
+ - docker run wanyama/facial-recognition
 
 after_script:
  - docker images
@@ -18,7 +18,7 @@ before_deploy:
 
 deploy:
  provider: script
- script: docker push wanyama/myimage
+ script: docker push wanyama/facial-recognition
  on:
   branch: master
  
