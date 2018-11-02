@@ -2,10 +2,23 @@ sudo:
   required
 services:
   - docker 
+env:
+  global:
+    - REGISTRY_USER=wanyaland
+    - REGISTY_PASS=knightf6
 
-  script:
-    - docker build --tag myimage
-    - docker run myimage
+script:
+  - docker build --tag compuscan/myimage
+  - docker run compuscan/myimage
   
-  after_script:
-    - docker images 
+after_script:
+  - docker images 
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+
+deploy:
+  provider: script
+  script: docker push compuscan/myimage
+  on:
+    branch: master
