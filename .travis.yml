@@ -7,8 +7,8 @@ env:
     - REGISTRY_PASS=knightf6
 
 script:
- - docker build --tag compuscan/myimage .
- - docker run compuscan/myimage
+ - docker build --tag wanyama/myimage .
+ - docker run wanyama/myimage
 
 after_script:
  - docker images
@@ -18,7 +18,7 @@ before_deploy:
 
 deploy:
  provider: script
- script: docker push compuscan/myimage
+ script: docker push wanyama/myimage
  on:
   branch: master
  
