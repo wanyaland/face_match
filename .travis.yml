@@ -3,7 +3,7 @@ services:
  - docker
 env:
   global:
-    - REGISTRY_USER=wanyaland
+    - REGISTRY_USER=nachwera
     - REGISTRY_PASS=knightf6
 
 script:
@@ -15,7 +15,7 @@ after_script:
 
 before_deploy:
  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
- 
+
 deploy:
  provider: script
  script: docker push compuscan/myimage
