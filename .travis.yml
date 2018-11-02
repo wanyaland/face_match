@@ -5,13 +5,17 @@ env:
   global:
     - REGISTRY_USER=wanyaland
     - REGISTRY_PASS=knightf6
+
 script:
  - docker build --tag compuscan/myimage .
  - docker run compuscan/myimage
+
 after_script:
  - docker images
+
 before_deploy:
  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+ 
 deploy:
  provider: script
  script: docker push compuscan/myimage
